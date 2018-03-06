@@ -23,11 +23,10 @@
   },
   "homepage": "https://github.com/hanselrd/darkve#readme",
   "dependencies": {
-    "@types/ws": "^4.0.1",
     "apollo-errors": "^1.7.1",
     "bcrypt": "^1.0.3",
     "dotenv": "^5.0.1",
-    "graphql-date": "^1.0.3",
+    "graphql-iso-date": "^3.5.0",
     "graphql-type-json": "^0.2.0",
     "graphql-yoga": "^1.4.3",
     "jsonwebtoken": "^8.2.0",
@@ -39,8 +38,6 @@
     "typescript": "^2.7.2"
   },
   "devDependencies": {
-    "@types/graphql-date": "^1.0.2",
-    "@types/graphql-type-json": "^0.1.2",
     "@types/node": "^9.4.6",
     "nodemon": "^1.17.1",
     "ts-node": "^5.0.1"

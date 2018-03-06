@@ -1,6 +1,9 @@
+import 'reflect-metadata';
 import { GraphQLServer, Options, PubSub } from 'graphql-yoga';
 import { formatError } from 'apollo-errors';
+import { createConnection } from 'typeorm';
 import schema from './schema';
+import { User } from './entity';
 
 const options: Options = {
   endpoint: '/graphql',
@@ -27,6 +30,14 @@ const server = new GraphQLServer({
   }
 });
 
-server.start(options, ({ port }) =>
-  console.log(`Server is running on port ${port}`)
-);
+createConnection({
+  type: 'postgres',
+  url: 'postgresql://postgres:postgres@localhost/darkve_dev',
+  synchronize: true,
+  logging: true,
+  entities: [User]
+}).then(() => {
+  server.start(options, ({ port }) =>
+    console.log(`Server is running on port ${port}`)
+  );
+});

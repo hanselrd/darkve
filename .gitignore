@@ -58,5 +58,5 @@ typings/
 .env
 
 # Custom
-.vscode
-build
+.vscode/
+build/
