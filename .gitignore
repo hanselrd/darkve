@@ -60,3 +60,4 @@ typings/
 # Custom
 .vscode/
 build/
+dist/

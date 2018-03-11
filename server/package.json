@@ -1,0 +1,27 @@
+{
+  "name": "darkve-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "ts-node -r dotenv/config src/index.ts",
+    "clean": "rm -rf build",
+    "compile": "tsc",
+    "build": "run-s clean compile",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon -L --exec ts-node -r dotenv/config src/index.ts"
+  },
+  "author": "Hansel De La Cruz",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "darkve-common": "file:../common",
+    "npm-run-all": "^4.1.2",
+    "typescript": "^2.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^9.4.7",
+    "dotenv": "^5.0.1",
+    "nodemon": "^1.17.1",
+    "ts-node": "^5.0.1"
+  }
+}

@@ -2,19 +2,25 @@
   "name": "darkve",
   "version": "1.0.0",
   "description": "",
-  "main": "server/index.ts",
+  "main": "server/build/index.js",
   "scripts": {
-    "start": "ts-node server/index.ts",
+    "start": "cd server && npm start",
     "clean": "rm -rf build",
-    "build:server": "tsc",
-    "build": "npm run clean && npm run build:server",
-    "watch": "nodemon -L --exec ts-node server/index.ts",
+    "build:common": "cd common && npm run build",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm run build",
+    "build": "run-s clean build:*",
+    "preinstall:common": "cd common && npm install",
+    "preinstall:client": "cd client && npm install",
+    "preinstall:server": "cd server && npm install",
+    "preinstall": "run-s preinstall:*",
     "postinstall": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "cd server && npm start"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hanselrd/darkve.git"
+    "url": "git+ssh://git@github.com/hanselrd/darkve.git"
   },
   "author": "Hansel De La Cruz",
   "license": "AGPL-3.0",
@@ -23,23 +29,6 @@
   },
   "homepage": "https://github.com/hanselrd/darkve#readme",
   "dependencies": {
-    "apollo-errors": "^1.7.1",
-    "bcrypt": "^1.0.3",
-    "dotenv": "^5.0.1",
-    "graphql-iso-date": "^3.5.0",
-    "graphql-type-json": "^0.2.0",
-    "graphql-yoga": "^1.4.3",
-    "jsonwebtoken": "^8.2.0",
-    "merge-graphql-schemas": "^1.5.0",
-    "pg": "^7.4.1",
-    "pg-hstore": "^2.3.2",
-    "reflect-metadata": "^0.1.12",
-    "typeorm": "^0.1.14",
-    "typescript": "^2.7.2"
-  },
-  "devDependencies": {
-    "@types/node": "^9.4.6",
-    "nodemon": "^1.17.1",
-    "ts-node": "^5.0.1"
+    "npm-run-all": "^4.1.2"
   }
 }
