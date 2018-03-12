@@ -1,16 +1,40 @@
-// import WebSocket from 'ws';
+import express from 'express';
+import path from 'path';
+import socket from 'socket.io';
+import { PacketHandler, PacketType } from 'darkve-common';
 
-// const wss = new WebSocket.Server({ port: 4000 });
+const port = process.env.PORT || 4000;
 
-// wss.on('connection', ws => {
-//   ws.on('message', message => {
-//     console.log('Received: %s', message);
-//   });
+const app = express();
 
-//   ws.send('something');
-// });
+app.use(express.static(path.join(__dirname, '../../client/build')));
 
-import { sum } from 'darkve-common';
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
+});
 
-console.log(process.env.DATABASE_URL);
-console.log(sum(2, 2));
+const server = app.listen(port, () => {
+  console.log('Server started on port 4000');
+});
+
+const io = socket(server);
+
+io.on('connection', socket => {
+  console.log(socket.id, 'connected');
+
+  const ph = new PacketHandler<string>(socket);
+
+  // socket.emit('darkve', { message: 'Hey' });
+  ph.send({ type: PacketType.ACTION, token: socket.id, data: 'Hey' });
+
+  // socket.on('darkve', data => {
+  //   console.log(data.message);
+  // });
+  ph.onrecv(packet => {
+    console.log(packet.data);
+  });
+
+  socket.on('disconnect', () => {
+    console.log(socket.id, 'disconnected');
+  });
+});
