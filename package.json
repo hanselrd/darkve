@@ -16,7 +16,7 @@
     "preinstall": "run-s preinstall:*",
     "postinstall": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "cd server && npm start"
+    "watch": "cd server && npm run watch"
   },
   "repository": {
     "type": "git",

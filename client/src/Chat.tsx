@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as io from 'socket.io-client';
-import { PacketHandler, PacketType } from 'darkve-common';
+import { PacketHandler, PacketType, SocketType } from 'darkve-common';
 
 // interface Data {
 //   message: string;
@@ -12,7 +12,7 @@ class Chat extends React.Component {
 
   componentWillMount() {
     this.socket = io('http://localhost:4000');
-    this.ph = new PacketHandler(undefined, this.socket);
+    this.ph = new PacketHandler(this.socket, SocketType.CLIENT);
     this.socket.on('connect', () => {
       console.log('Connected', `my id is ${this.socket.id}`);
 
@@ -20,7 +20,7 @@ class Chat extends React.Component {
       //   console.log(data.message);
       // });
       this.ph.onrecv(packet => {
-        console.log(packet.data);
+        console.log(packet);
       });
     });
   }

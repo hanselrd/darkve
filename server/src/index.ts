@@ -31,7 +31,7 @@ io.on('connection', socket => {
   //   console.log(data.message);
   // });
   ph.onrecv(packet => {
-    console.log(packet.data);
+    console.log(packet);
   });
 
   socket.on('disconnect', () => {
