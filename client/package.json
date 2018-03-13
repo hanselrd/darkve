@@ -14,7 +14,8 @@
     "react-dom": "^16.2.0",
     "react-scripts-ts": "2.13.0",
     "socket.io-client": "^2.0.4",
-    "three": "^0.90.0"
+    "three": "^0.90.0",
+    "three-addons": "^1.1.0"
   },
   "devDependencies": {
     "@types/jest": "^22.2.0",
