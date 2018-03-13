@@ -1,12 +1,28 @@
 import * as React from 'react';
 import './App.css';
-import Three from './Three';
+import Game from './game';
 
 class App extends React.Component {
+  gameDiv: HTMLDivElement;
+  game: Game;
+
+  componentDidMount() {
+    this.game = new Game(this.gameDiv);
+  }
+
+  componentWillUnmount() {
+    this.game.destroy();
+  }
+
   render() {
     return (
       <div className="App">
-        <Three />
+        <div
+          id="App-game"
+          ref={(div: HTMLDivElement) => {
+            this.gameDiv = div;
+          }}
+        />
       </div>
     );
   }
