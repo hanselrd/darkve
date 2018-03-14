@@ -13,7 +13,7 @@ export default class Play extends Phaser.State {
     this.map = this.add.tilemap('map00001');
     this.map.addTilesetImage('city');
     this.map.addTilesetImage('country');
-    this.layer = this.map.createLayer('Tile Layer 1');
+    this.layer = this.map.createLayer('background');
     this.layer.resizeWorld();
 
     this.player = this.add.sprite(0, 0, 'none');
