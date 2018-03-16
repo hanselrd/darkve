@@ -1,0 +1,59 @@
+#App-game,
+#App-game-ui {
+  position: absolute;
+}
+
+#App-game-ui {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#App-game-ui * {
+  pointer-events: fill;
+}
+
+#App-game-ui p {
+  margin: 5px;
+  padding: 0;
+  color: white;
+  position: absolute;
+  right: 0;
+}
+
+#App-game-ui button {
+  margin: 5px;
+  border: none;
+  outline: none;
+  display: inline;
+  border-radius: 5px;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+#App-game-ui button:hover {
+  background-color: black;
+  color: white;
+}
+
+#chat {
+  width: 500px;
+  height: 150px;
+  float: left;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  resize: vertical;
+}
+
+#buttons {
+  float: right;
+}
+
+#App-game-ui .ui-bottom {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+}

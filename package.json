@@ -5,7 +5,9 @@
   "main": "server/build/index.js",
   "scripts": {
     "start": "cd server && npm start",
-    "clean": "rm -rf build",
+    "clean:common": "cd common && npm run clean",
+    "clean:server": "cd server && npm run clean",
+    "clean": "run-s clean:*",
     "build:common": "cd common && npm run build",
     "build:client": "cd client && npm run build",
     "build:server": "cd server && npm run build",
@@ -13,8 +15,7 @@
     "preinstall:common": "cd common && npm install",
     "preinstall:client": "cd client && npm install",
     "preinstall:server": "cd server && npm install",
-    "preinstall": "run-s preinstall:*",
-    "postinstall": "npm run build",
+    "postinstall": "run-s preinstall:* && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "cd server && npm run watch"
   },

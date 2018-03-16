@@ -13,6 +13,9 @@ export default class Boot extends Phaser.State {
     this.physics.p2.gravity.y = 0;
     this.physics.p2.applyGravity = false;
     this.camera.bounds = <any>null;
+    this.game.canvas.oncontextmenu = event => {
+      event.preventDefault();
+    };
     window.addEventListener('resize', () => {
       this.scale.setGameSize(
         window.innerWidth * window.devicePixelRatio,

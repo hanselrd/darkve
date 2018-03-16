@@ -37,6 +37,51 @@ class App extends React.Component {
             this.gameDiv = div;
           }}
         />
+        <div id="App-game-ui">
+          <p>Darkve</p>
+          <div className="ui-bottom">
+            <div id="chat">
+              <span>
+                <span style={{ color: 'purple', fontWeight: 'bold' }}>
+                  [SYSTEM]:{' '}
+                </span>
+                <span>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit
+                  quidem perspiciatis id in quasi fugiat et? Vitae eos saepe,
+                  nobis voluptates cupiditate molestiae esse ea consequatur
+                  ullam dicta aliquam fugiat!
+                </span>
+                <span>
+                  Nostrum, reiciendis distinctio dolore nobis vitae earum enim
+                  blanditiis debitis dolor, amet veritatis sit ipsa a nihil
+                  explicabo possimus deleniti beatae. Illum, fuga reiciendis!
+                  Molestiae excepturi explicabo neque laboriosam ipsam?
+                </span>
+                <span>
+                  Aliquid quis ab cumque qui nesciunt dolores beatae molestiae
+                  dolore ex iure possimus, fugiat magni voluptatum ea porro
+                  magnam recusandae ratione illo assumenda? Libero cupiditate
+                  voluptas, ex ullam minima possimus!
+                </span>
+                <span>
+                  Hic rerum commodi alias, suscipit distinctio, incidunt
+                  doloremque quam magnam quidem minus nostrum eligendi eveniet
+                  non velit molestias iste corrupti dignissimos saepe dolorum
+                  laborum, mollitia debitis deserunt doloribus atque. Nostrum?
+                </span>
+                <span>
+                  Eligendi debitis accusantium temporibus alias suscipit, ullam
+                  magnam voluptatem animi delectus aliquam eius illum ipsa ut,
+                  nobis iste voluptate, unde aut ea perferendis veritatis modi
+                  quia harum! Iste, quia aspernatur.
+                </span>
+              </span>
+            </div>
+            <div id="buttons">
+              <button onClick={() => alert('hey')}>Settings</button>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
