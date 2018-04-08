@@ -14,7 +14,7 @@ import { User } from './models';
 const options: Options = {
   port: +process.env.PORT || 4000,
   endpoint: '/graphql',
-  subscriptions: false,
+  subscriptions: '/graphql',
   playground: process.env.NODE_ENV !== 'production' ? '/playground' : false,
   formatError
 };
@@ -22,7 +22,14 @@ const options: Options = {
 const server = new GraphQLServer({
   schema,
   context: async req => {
-    let token = <string>req.request.get('authorization');
+    let token: string;
+    if (req.request) {
+      token = <string>req.request.get('authorization');
+      console.log('http');
+    } else if (req.connection) {
+      token = <string>req.connection['authorization'];
+      console.log('ws');
+    }
     if (token) {
       try {
         token = token.replace('Bearer ', '');

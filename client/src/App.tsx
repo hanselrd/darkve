@@ -1,11 +1,22 @@
 import * as React from 'react';
-import './App.css';
-
+import { graphql, ChildDataProps } from 'react-apollo';
+import gql from 'graphql-tag';
 // import * as io from 'socket.io-client';
-
+import './App.css';
 import Game from './game';
 
-class App extends React.Component {
+type UsersQueryData = {
+  users: [
+    {
+      id: string;
+      name: string;
+    }
+  ];
+};
+
+export type AppProps = ChildDataProps<{}, UsersQueryData>;
+
+class App extends React.Component<AppProps> {
   gameDiv: HTMLDivElement;
   game: Game;
   // socket: SocketIOClient.Socket;
@@ -29,8 +40,11 @@ class App extends React.Component {
   }
 
   render() {
+    const { data: { loading, users } } = this.props;
     return (
       <div className="App">
+        <p>{loading ? 'loading' : 'loaded'}</p>
+        <p>{JSON.stringify(users)}</p>
         <div
           id="App-game"
           ref={(div: HTMLDivElement) => {
@@ -87,4 +101,11 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default graphql(gql`
+  query users {
+    users {
+      id
+      name
+    }
+  }
+`)(App);
