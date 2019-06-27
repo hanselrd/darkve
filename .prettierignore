@@ -1,4 +1,5 @@
 common/dist
+common/wasm
 package.json
 tsconfig.json
 tslint.json

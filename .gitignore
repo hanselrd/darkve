@@ -90,4 +90,6 @@ typings/
 # Custom
 .vscode
 common/dist
+common/wasm/pkg
+common/wasm/target
 server/dist
