@@ -2,23 +2,24 @@
   "name": "darkve",
   "version": "1.0.0",
   "description": "",
-  "main": "server/build/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "cd server && npm start",
     "build:common": "cd common && npm run build",
-    "build:client": "cd client && npm run build",
     "build:server": "cd server && npm run build",
     "build": "run-s build:*",
-    "preinstall:common": "cd common && npm install",
-    "preinstall:client": "cd client && npm install",
-    "preinstall:server": "cd server && npm install",
-    "postinstall": "run-s preinstall:* && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "cd server && npm run watch"
+    "test:common": "cd common && npm test",
+    "test:server": "cd server && npm test",
+    "test": "run-s test:*",
+    "lint:tslint": "tslint '{common,server}/src/**/*.{ts,tsx}'",
+    "lint:prettier": "prettier '{common,server}/**/*.{html,css,ts,tsx,json,md}' --check",
+    "lint": "run-s lint:*",
+    "format:tslint": "tslint '{common,server}/src/**/*.{ts,tsx}' --fix",
+    "format:prettier": "prettier '{common,server}/**/*.{html,css,ts,tsx,json,md}' --write",
+    "format": "run-s format:*"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/hanselrd/darkve.git"
+    "url": "git+https://hanselrd@github.com/hanselrd/darkve.git"
   },
   "author": "Hansel De La Cruz",
   "license": "AGPL-3.0",
@@ -27,6 +28,17 @@
   },
   "homepage": "https://github.com/hanselrd/darkve#readme",
   "dependencies": {
-    "npm-run-all": "^4.1.2"
+    "husky": "^2.4.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.5.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "run-s lint test"
+    }
   }
 }

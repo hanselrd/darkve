@@ -1,2 +1,0 @@
-directive @auth on FIELD_DEFINITION
-directive @private on FIELD_DEFINITION

@@ -1,2 +1,5 @@
-export { Packet, PacketType } from './Packet';
-export { PacketHandler, SocketType } from './PacketHandler';
+export const sum = (a: number[]): number => {
+  return a.reduce(
+    (previousValue, currentValue, currentIndex, array) => previousValue + currentValue
+  );
+};
